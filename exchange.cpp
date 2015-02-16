@@ -1,4 +1,4 @@
-#include "testApp.h"
+#include "exchange.h"
 #include <vector>
 
 
@@ -6,7 +6,7 @@
 vector<ofImage> images;
 string qr_dir = "qrimages";
 ofImage img;
-void testApp::setup() {
+void Exchange::setup() {
     
     ofSetVerticalSync(true);
     cam.initGrabber(SCREEN_W, SCREEN_H);
@@ -28,7 +28,7 @@ string url = "";
 string goto_url = "";
 ofImage res;
 
-void testApp::update() {
+void Exchange::update() {
     cam.update();
     if(cam.isFrameNew()) {
         ofxZxing::Result curResult = ofxZxing::decode(cam.getPixelsRef(), true);
@@ -47,7 +47,7 @@ void testApp::update() {
     }
 }
 
-void testApp::draw() {
+void Exchange::draw() {
     ofSetColor(255);
     if(result.getFound()) {
         
@@ -69,7 +69,7 @@ void testApp::draw() {
     }
 }
 
-void testApp::keyReleased(int key){
+void Exchange::keyReleased(int key){
     switch (key) {
         case OF_KEY_RETURN:
             if (goto_url.length() > 0) {
